@@ -1,0 +1,26 @@
+<head>
+<meta charset="UTF-8">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
+<body>
+<script type="text/javascript" defer>
+    Telegram.WebApp.ready();
+    Telegram.WebApp.MainButton.setText('Xác nhận').show().onClick(function () {
+        const data = JSON.stringify({
+          username: document.querySelector('input[name=username]').value,
+          password: document.querySelector('input[name=password]').value,
+          date_start: document.querySelector('input[name=dates]').value,
+          date_end: document.querySelector('input[name=datee]').value,
+          ei_type: document.getElementsByName('ei_type')[0].value,
+          download_ei: [].filter.call(document.getElementsByName('download_ei'), (c) => c.checked).map(c => c.value)
+         });
+        Telegram.WebApp.sendData(data);
+        Telegram.WebApp.close();
+    });
+</script>
+
+<script type="text/javascript">
+    Telegram.WebApp.expand();
+</script>
+</body>
